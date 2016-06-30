@@ -1,8 +1,8 @@
 #!/usr/bin/env bash
 
 # Use single quotes instead of double quotes to make it work with special-character passwords
-PASSWORD='12345678'
-PROJECTFOLDER='myproject'
+PASSWORD='rodrigues'
+PROJECTFOLDER='vagrant.app'
 
 # create project folder
 sudo mkdir "/var/www/html/${PROJECTFOLDER}"
@@ -54,8 +54,8 @@ sudo service postgresql restart
 # setup hosts file
 VHOST=$(cat <<EOF
 <VirtualHost *:80>
-    DocumentRoot "/var/www/html/${PROJECTFOLDER}"
-    <Directory "/var/www/html/${PROJECTFOLDER}">
+    DocumentRoot "/var/www/${PROJECTFOLDER}"
+    <Directory "/var/www/${PROJECTFOLDER}">
         AllowOverride All
         Require all granted
     </Directory>
