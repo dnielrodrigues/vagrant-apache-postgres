@@ -2,10 +2,10 @@
 
 # Use single quotes instead of double quotes to make it work with special-character passwords
 PASSWORD='rodrigues'
-PROJECTFOLDER='vagrant.app'
+PROJECTFOLDER='html'
 
 # create project folder
-sudo mkdir "/var/www/html/${PROJECTFOLDER}"
+sudo mkdir "/var/www/${PROJECTFOLDER}"
 
 # update / upgrade
 sudo apt-get update
@@ -63,6 +63,52 @@ VHOST=$(cat <<EOF
 EOF
 )
 echo "${VHOST}" > /etc/apache2/sites-available/000-default.conf
+
+# setup hosts vagrant.app file
+VHOSTVAGRANT=$(cat <<EOF
+<VirtualHost *:80>
+        ServerName vagrant.app
+        ServerAlias www.vagrant.app
+        ServerAdmin webmaster@localhost
+        DocumentRoot /var/www/vagrant.app/public
+        ErrorLog ${APACHE_LOG_DIR}/error.log
+        CustomLog ${APACHE_LOG_DIR}/access.log combined
+        <Directory "/var/www/vagrant.app/public">
+        AllowOverride All
+        </Directory>
+        ErrorLog ${APACHE_LOG_DIR}/error.log
+        CustomLog ${APACHE_LOG_DIR}/access.log combined
+</VirtualHost>
+EOF
+)
+echo "${VHOSTVAGRANT}" > /etc/apache2/sites-available/vagrant.app.conf
+
+# create folder
+sudo mkdir /var/www/vagrant.app/public
+
+# enable host vagrant.app
+sudo a2ensite /etc/apache2/sites-available/vagrant.app.conf
+
+# change apache user to "vagrant"
+sudo cp /etc/apache2/envvars /etc/apache2/envvars-bkp
+APACHECONFIGFILE=$(cat<<EOF
+unset HOME
+if [ "${APACHE_CONFDIR##/etc/apache2-}" != "${APACHE_CONFDIR}" ] ; then
+        SUFFIX="-${APACHE_CONFDIR##/etc/apache2-}"
+else
+        SUFFIX=
+fi
+export APACHE_RUN_USER=vagrant
+export APACHE_RUN_GROUP=vagrant
+export APACHE_PID_FILE=/var/run/apache2/apache2$SUFFIX.pid
+export APACHE_RUN_DIR=/var/run/apache2$SUFFIX
+export APACHE_LOCK_DIR=/var/lock/apache2$SUFFIX
+export APACHE_LOG_DIR=/var/log/apache2$SUFFIX
+export LANG=C
+export LANG
+EOF
+)
+echo "${APACHECONFIGFILE}" > /etc/apache2/envvars
 
 # enable mod_rewrite
 sudo a2enmod rewrite
