@@ -15,6 +15,8 @@ On MAC or Linux:
 On RUINdows
 * .|_
 
+#### Enjoy
+
 ## Whaaaaat ?
 
 This is a reduced-to-the-max Vagrant setup file for a quick development stack. It will:
@@ -41,7 +43,7 @@ The bootstrap.sh will:
 
 You can folder and password inside the bootstrap.sh for sure.
 
-### Why ?
+## Why ?
 
 This is just my personal time-saving bootstrap for Vagrant, it might be useful for you too.
 
