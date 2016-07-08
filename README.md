@@ -8,14 +8,11 @@ Put `Vagrantfile` and `bootstrap.sh` inside a folder and do a `vagrant up` on th
 This box uses Ubuntu 14.04 LTS "Trustry Thar" 64bit, so if you don't have the basic box already, do a 
 `vagrant box add ubuntu/trusty64` before.
 
-## Create the host alias to "vagrant.app"
-
-### On MAC or Linux
-
-In Terminal: `sudo nano /private/etc/hosts` and add the line: `192.168.33.22   vagrant.app`
-
-### On RUINdows
-_|_
+<b>Create the host alias to "vagrant.app" <b>
+On MAC or Linux: 
+* In Terminal: `sudo nano /private/etc/hosts` and add the line: `192.168.33.22   vagrant.app`
+On RUINdows
+* _|_
 
 <b>It wasn't properly tested!</b>
 
