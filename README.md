@@ -48,3 +48,9 @@ You can folder and password inside the bootstrap.sh for sure.
 This is just my personal time-saving bootstrap for Vagrant, it might be useful for you too.
 
 #### It wasn't properly tested!
+
+## Basis Commands
+
+´vagrant ssh´ : connect to vm
+´vagrant halt´ : shutdown the vm
+´vagrant up´ : start the vm
