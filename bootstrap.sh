@@ -84,7 +84,8 @@ EOF
 echo "${VHOSTVAGRANT}" > /etc/apache2/sites-available/vagrant.app.conf
 
 # create folder
-sudo mkdir /var/www/vagrant.app/public
+mkdir /var/www/vagrant.app
+mkdir /var/www/vagrant.app/public
 
 # enable host vagrant.app
 sudo a2ensite /etc/apache2/sites-available/vagrant.app.conf
@@ -113,8 +114,12 @@ echo "${APACHECONFIGFILE}" > /etc/apache2/envvars
 # enable mod_rewrite
 sudo a2enmod rewrite
 
+# resolve apache ServerName bug
+sudo echo "ServerName localhost" >> /etc/apache2/httpd.conf
+
 # restart apache
-service apache2 restart
+sudo service apache2 reload
+sudo service apache2 restart
 
 # install git
 sudo apt-get -y install git
