@@ -2,21 +2,6 @@
 
 A super-simple Vagrantfile / bootstrap.sh to setup a web stack (apache, php) with postgres database, inside Vagrant 100% automatically.
 
-# How to use ?
-
-Put `Vagrantfile` and `bootstrap.sh` inside a folder and do a `vagrant up` on the command line.
-This box uses Ubuntu 14.04 LTS "Trustry Thar" 64bit.
-
-#### Create the host alias to "vagrant.app"</b>
-
-On MAC or Linux: 
-* In Terminal: `sudo nano /private/etc/hosts` and add the line: `192.168.33.22   vagrant.app`
-
-On RUINdows
-* .|_
-
-#### Enjoy
-
 ## Whaaaaat ?
 
 This is a reduced-to-the-max Vagrant setup file for a quick development stack. It will:
@@ -48,6 +33,21 @@ You can folder and password inside the bootstrap.sh for sure.
 This is just my personal time-saving bootstrap for Vagrant, it might be useful for you too.
 
 #### It wasn't properly tested!
+
+# How to use ?
+
+Put `Vagrantfile` and `bootstrap.sh` inside a folder and do a `vagrant up` on the command line.
+This box uses Ubuntu 14.04 LTS "Trustry Thar" 64bit.
+
+#### Create the host alias to "vagrant.app"</b>
+
+On MAC or Linux: 
+* In Terminal: `sudo nano /private/etc/hosts` and add the line: `192.168.33.22   vagrant.app`
+
+On RUINdows
+* .|_
+
+#### Enjoy
 
 ## Basis Commands
 
