@@ -34,6 +34,21 @@ sudo -u postgres psql -c "CREATE ROLE root LOGIN UNENCRYPTED PASSWORD '$PASSWORD
 # create new database "database"
 sudo -u postgres psql -c "CREATE DATABASE database"
 
+# restart postgres
+sudo service postgresql restart
+
+# install PDO postgres
+sudo apt-get install php5-pgsql
+
+# config postgres PDO
+POSTGREPDOCONFIG=$(cat<<EOF
+extension=pdo.so
+extension=php_pgsql.so
+EOF
+)
+sudo echo "${APACHECONFIGFILE}" >> /etc/php5/apache2/php.ini
+
+# restart postgres
 sudo service postgresql restart
 
 # install mysql and give password to installer
